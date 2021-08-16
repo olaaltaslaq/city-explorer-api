@@ -4,16 +4,28 @@ const express = require('express');
 
 const server = express();
 
-const PORT = 3001;
+const PORT = 3003;
+
+const pokeData = require('./weather.json')
 
 
-//localhost:3001/test
-server.get('/test',(request,response)=>{
-    response.send('your server is working')
+//localhost:3003/data/weather.json
+server.get('/data/weather.json',(req,res)=>{
+
+    let weather = req.query.cityName;
+    let weatherInfo = weatherData.results.find(city=>{
+        if(city.name.toLowerCase()===weather) {
+            return city;
+        }
+    })
+    res.send(weatherInfo);
+})
+
+server.get('*',(req,res)=>{
+    res.status(404).send('not found')
 })
 
 server.listen(PORT,()=>{
     console.log(`Listning on PORT ${PORT}`)
 })
-
 
