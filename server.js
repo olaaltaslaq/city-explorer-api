@@ -6,7 +6,7 @@ const server = express();
 
 const PORT = 3003;
 
-const pokeData = require('./weather.json')
+const weatherData = require('./assets/weather.json')
 
 
 //localhost:3003/data/weather.json
