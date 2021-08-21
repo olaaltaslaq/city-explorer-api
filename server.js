@@ -8,6 +8,7 @@ const PORT = 3003;
 
 const weatherData = require('./assets/weather.json')
 
+let inMemory = {}
 
 //localhost:3003/data/weather.json
 server.get('/data/weather.json',(req,res)=>{
@@ -17,6 +18,9 @@ server.get('/data/weather.json',(req,res)=>{
         if(city.name.toLowerCase()===weather) {
             return city;
         }
+        inMemory[SearchQuery] = Array;
+                console.log(inMemory)
+                res.send(Array)
     })
     res.send(weatherInfo);
 })
